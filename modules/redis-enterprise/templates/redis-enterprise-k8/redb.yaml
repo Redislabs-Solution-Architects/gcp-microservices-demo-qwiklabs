@@ -1,0 +1,9 @@
+apiVersion: app.redislabs.com/v1alpha1
+kind: RedisEnterpriseDatabase
+metadata:
+  name: redis-enterprise-database
+  labels:
+    app: redis-enterprise
+spec:
+  memorySize: 200MB
+  databasePort: 13188
