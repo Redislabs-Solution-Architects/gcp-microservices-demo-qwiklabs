@@ -54,7 +54,7 @@ Outputs:
 
 db_password = <sensitive>
 gke_cluster_name = "gke-boutique"
-redis_connection_string = "redis-enterprise-database-headless:13188,user=default,password=5KEBTUqA"
+db_private_endpoint = "redis-enterprise-database-headless:13188"
 region = "us-central1"
 ```
 
