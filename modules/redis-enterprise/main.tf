@@ -4,10 +4,6 @@ resource "null_resource" "set_gke_creds" {
   }
 }
 
-data "template_file" "redis_enterprise_k8" {
-  template = file("${path.module}/templates/redis-enterprise-k8/bundle.yaml")
-}
-
 resource "null_resource" "deploy_redis_enterprise_k8" {
   depends_on = [
     null_resource.set_gke_creds
@@ -16,9 +12,8 @@ resource "null_resource" "deploy_redis_enterprise_k8" {
     command = <<-EOT
         kubectl create namespace redis && \
         kubectl config set-context --current --namespace=redis && \
-        cat <<-EOF | kubectl apply -f -
-        ${data.template_file.redis_enterprise_k8.rendered}
-        EOF
+        VERSION=v6.4.2-4 && \
+        kubectl apply -f https://raw.githubusercontent.com/RedisLabs/redis-enterprise-k8s-docs/$VERSION/bundle.yaml
     EOT
   }
 }
