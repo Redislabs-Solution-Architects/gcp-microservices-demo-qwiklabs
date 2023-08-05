@@ -14,7 +14,7 @@ data "template_file" "online_boutique" {
 resource "null_resource" "deploy_online_boutique" {
   provisioner "local-exec" {
     command = <<-EOT
-        kubectl config set-context --current --namespace=default && \
+        kubectl config set-context --current --namespace=redis && \
         cat <<-EOF | kubectl apply -f -
         ${data.template_file.online_boutique.rendered}
         EOF
