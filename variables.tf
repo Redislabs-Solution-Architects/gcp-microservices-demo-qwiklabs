@@ -30,7 +30,7 @@ variable "gke_release_channel" {
 variable "gke_machine_type" {
   description = "The type of machine to deploy"
   type        = string
-  default     = "e2-standard-2"
+  default     = "e2-standard-4"
 }
 
 variable "redis_db_type" {
